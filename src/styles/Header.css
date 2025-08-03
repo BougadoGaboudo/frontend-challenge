@@ -1,0 +1,6 @@
+header {
+    background-color: var(--light-grey);
+}
+h1 {
+    color: var(--primary-color);
+}
