@@ -34,6 +34,7 @@ export default function Header({ onSaveClick }: HeaderProps) {
               width: "100%",
               maxWidth: "92rem",
               mx: "auto",
+              flexDirection: { xs: "column", sm: "row" },
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -45,7 +46,15 @@ export default function Header({ onSaveClick }: HeaderProps) {
                 Ma Campagne
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                flexDirection: { xs: "column", sm: "row" },
+                mt: { xs: 2, sm: 0 },
+              }}
+            >
               <Button
                 variant="outlined"
                 sx={{
@@ -81,7 +90,7 @@ export default function Header({ onSaveClick }: HeaderProps) {
                 SAUVEGARDER
               </Button>
               <IconButton>
-                <MoreVert />
+                <MoreVert sx={{ transform: "rotate(90deg)" }} />
               </IconButton>
             </Box>
           </Box>
