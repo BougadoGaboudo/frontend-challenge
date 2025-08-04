@@ -189,7 +189,7 @@ export default function ClaimCondition({ gifts, onChange }: Props) {
             placeholder="Ex : 10€ d'achat minimum pour récupérer le gain"
             disabled={!hasCondition}
             sx={{
-              width: "26.5rem",
+              width: { xs: "18rem", sm: "26.5rem" },
               borderRadius: "0.5rem",
               ml: 3.5,
               mt: 3,
