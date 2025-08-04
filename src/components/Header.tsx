@@ -5,14 +5,31 @@ import {
   Button,
   IconButton,
   Typography,
+  Modal,
 } from "@mui/material";
 import { QrCode, MoreVert } from "@mui/icons-material";
+import { useState } from "react";
 
 interface HeaderProps {
   onSaveClick: () => void;
 }
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "#fff",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 export default function Header({ onSaveClick }: HeaderProps) {
+  const [modalType, setModalType] = useState<null | "pin" | "qr">(null);
+  const handleClose = () => setModalType(null);
+
   return (
     <header>
       <AppBar
@@ -62,6 +79,7 @@ export default function Header({ onSaveClick }: HeaderProps) {
                   backgroundColor: "#fff",
                   borderLeft: "0.5rem solid #5500A4",
                 }}
+                onClick={() => setModalType("pin")}
               >
                 Mon Code PIN
               </Button>
@@ -74,9 +92,17 @@ export default function Header({ onSaveClick }: HeaderProps) {
                   boxShadow: "none",
                   "&:hover": { boxShadow: "none" },
                 }}
+                onClick={() => setModalType("qr")}
               >
                 QR Code
               </Button>
+              <Modal open={modalType !== null} onClose={handleClose}>
+                <Box sx={style}>
+                  <Typography>
+                    {modalType === "pin" ? "Mon Code PIN" : "QR Code"}
+                  </Typography>
+                </Box>
+              </Modal>
               <Button
                 variant="contained"
                 sx={{
