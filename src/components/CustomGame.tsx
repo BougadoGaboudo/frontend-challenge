@@ -100,9 +100,10 @@ export default function CustomGame({
             p: 5,
             mt: 4,
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: { xs: "center", sm: "space-between" },
+            flexDirection: { xs: "column", sm: "row" },
             gap: 2,
-            alignItems: "flex-start",
+            alignItems: { xs: "center", sm: "flex-start" },
           }}
         >
           <Box>
@@ -121,8 +122,8 @@ export default function CustomGame({
               sx={{
                 border: "2px dashed #E0E0E0",
                 borderRadius: "0.5rem",
-                width: "40rem",
-                height: "24rem",
+                width: { xs: "20rem", lg: "40rem" },
+                height: { xs: "16rem", lg: "24rem" },
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -180,7 +181,7 @@ export default function CustomGame({
             >
               <Typography>Importez vos couleurs</Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: 8, mx: 4 }}>
+            <Box sx={{ display: "flex", gap: { xs: 4, lg: 8 }, mx: 4 }}>
               {/* Couleur primaire */}
               <Box
                 sx={{
