@@ -70,7 +70,22 @@ export default function GameSelector({ profile }: GameSelectorProps) {
         </Box>
 
         <Collapse in={open}>
-          <Box sx={{ display: "flex", gap: 3, mt: 4 }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 3,
+              mt: 4,
+              paddingBottom: "1rem",
+              overflowX: "auto",
+              "&::-webkit-scrollbar": {
+                height: "1rem",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "rgba(0,0,0,0.2)",
+                borderRadius: "1rem",
+              },
+            }}
+          >
             {gameTypes.map((game) => {
               const isSelected = value === game.value;
               const isDisabled = disabled && game.value !== "WHEEL";
@@ -84,6 +99,7 @@ export default function GameSelector({ profile }: GameSelectorProps) {
                   sx={(theme) => ({
                     width: "18rem",
                     height: "18rem",
+                    flexShrink: 0,
                     cursor: isDisabled ? "not-allowed" : "pointer",
                     border: isSelected
                       ? `0.4rem solid ${theme.palette.primary.main}`
