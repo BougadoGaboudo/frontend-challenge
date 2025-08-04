@@ -101,20 +101,21 @@ export default function CampaignAction() {
     <>
       <Box>
         <Box
-          sx={(theme) => ({
-            borderLeft: `0.75rem solid ${theme.palette.primary.main}`,
-            borderTopLeftRadius: "0.25rem",
-            borderBottomLeftRadius: "0.25rem",
-            p: 2,
-            mb: 4,
-          })}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: { xs: "center", sm: "flex-end" },
+            flexDirection: { xs: "column", sm: "row" },
+            mb: { xs: 2, sm: 4 },
+          }}
         >
           <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-            }}
+            sx={(theme) => ({
+              borderLeft: `0.75rem solid ${theme.palette.primary.main}`,
+              borderTopLeftRadius: "0.25rem",
+              borderBottomLeftRadius: "0.25rem",
+              p: 2,
+            })}
           >
             <Box>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -125,57 +126,56 @@ export default function CampaignAction() {
                 pour maximiser l'engagement.
               </Typography>
             </Box>
-            <Button
-              variant="contained"
-              endIcon={<Add />}
-              size="large"
-              sx={{
-                backgroundColor: "primary.main",
-                borderRadius: "0.5rem",
-                fontWeight: "normal",
-                textTransform: "none",
-                padding: "0.5rem 1.5rem",
-              }}
-              disableElevation
-              onClick={handleOpenMenu}
-            >
-              Ajouter une action
-            </Button>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleCloseMenu}
-            >
-              {remainingTypes.length > 0 ? (
-                remainingTypes.map((item) => (
-                  <MenuItem
-                    key={item.type}
-                    onClick={() => {
-                      setValue("actions", [
-                        ...actions,
-                        {
-                          id: crypto.randomUUID(),
-                          priority: actions.length + 1,
-                          type: item.type,
-                          target: `https://${item.type.toLowerCase()}.com`,
-                        },
-                      ]);
-                      handleCloseMenu();
-                    }}
-                  >
-                    {actionMetaByType[item.type].icon}
-                    <Typography ml={1}>
-                      {actionMetaByType[item.type].label}
-                    </Typography>
-                  </MenuItem>
-                ))
-              ) : (
-                <MenuItem disabled>
-                  Toutes les actions ont été ajoutées
-                </MenuItem>
-              )}
-            </Menu>
           </Box>
+          <Button
+            variant="contained"
+            endIcon={<Add />}
+            size="large"
+            sx={{
+              backgroundColor: "primary.main",
+              borderRadius: "0.5rem",
+              fontWeight: "normal",
+              textTransform: "none",
+              padding: "0.5rem 1.5rem",
+              mt: { xs: 2, sm: 0 },
+            }}
+            disableElevation
+            onClick={handleOpenMenu}
+          >
+            Ajouter une action
+          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleCloseMenu}
+          >
+            {remainingTypes.length > 0 ? (
+              remainingTypes.map((item) => (
+                <MenuItem
+                  key={item.type}
+                  onClick={() => {
+                    setValue("actions", [
+                      ...actions,
+                      {
+                        id: crypto.randomUUID(),
+                        priority: actions.length + 1,
+                        type: item.type,
+                        target: `https://${item.type.toLowerCase()}.com`,
+                      },
+                    ]);
+                    handleCloseMenu();
+                  }}
+                >
+                  {actionMetaByType[item.type].icon}
+                  <Typography ml={1}>
+                    {actionMetaByType[item.type].label}
+                  </Typography>
+                </MenuItem>
+              ))
+            ) : (
+              <MenuItem disabled>Toutes les actions ont été ajoutées</MenuItem>
+            )}
+          </Menu>
         </Box>
 
         <TableContainer
@@ -233,7 +233,7 @@ export default function CampaignAction() {
 
               {/* Parrainage (Par défaut) */}
               <TableRow>
-                <TableCell>
+                <TableCell sx={{ borderRight: "1px solid #E0E0E0" }}>
                   {getOrderLabel(actions.length + 1, actions.length + 2)}
                 </TableCell>
                 <TableCell>
