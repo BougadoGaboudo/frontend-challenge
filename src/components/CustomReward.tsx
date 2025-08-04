@@ -241,7 +241,14 @@ export default function CustomReward() {
             }}
           />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mb: 4,
+            flexDirection: { xs: "column", sm: "row" },
+          }}
+        >
           <Typography
             color="grey"
             sx={{ maxWidth: "35rem", fontSize: 14, ml: 3.5 }}
@@ -250,7 +257,14 @@ export default function CustomReward() {
             décochez, une case 'Perdu' sera automatiquement ajoutée au jeu.
           </Typography>
 
-          <Box sx={{ display: "flex", gap: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              mt: { xs: 2, sm: 0 },
+              justifyContent: "center",
+            }}
+          >
             <Button
               variant="contained"
               endIcon={<ConfirmationNumberOutlined />}
