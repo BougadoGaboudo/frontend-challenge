@@ -6,18 +6,24 @@ export default function SystemAlert() {
     <Alert
       severity="warning"
       sx={{
-        px: "2rem",
-        py: "2rem",
-        my: "4rem",
+        px: { xs: "1rem", sm: "2rem" },
+        py: { xs: "1rem", sm: "2rem" },
+        my: { xs: "2rem", sm: "4rem" },
         backgroundColor: "#FFF2BF",
         border: "2px solid #FFCC00",
         borderRadius: "1rem",
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: "center",
         "& .MuiAlert-icon": {
           color: "#856404",
+          mr: { xs: 0, sm: "1rem" },
         },
         "& .MuiAlert-action": {
           display: "flex",
           alignItems: "center",
+          justifyContent: { xs: "center" },
+          ml: { xs: 0, sm: "auto" },
+          p: { xs: 0 },
         },
       }}
       icon={
@@ -31,7 +37,11 @@ export default function SystemAlert() {
             justifyContent: "center",
           }}
         >
-          <Lock sx={{ color: "#FFCC00" }} />
+          <Lock
+            sx={{
+              color: "#FFCC00",
+            }}
+          />
         </Box>
       }
       action={
@@ -53,11 +63,22 @@ export default function SystemAlert() {
     >
       <AlertTitle
         variant="h6"
-        sx={{ marginLeft: "1rem", fontWeight: "bold", color: "black" }}
+        sx={{
+          marginLeft: { xs: "0", sm: "1rem" },
+          textAlign: { xs: "center", sm: "left" },
+          fontWeight: "bold",
+          color: "black",
+        }}
       >
         Votre Code PIN n'est pas configuré
       </AlertTitle>
-      <Typography sx={{ marginLeft: "1rem", color: "black" }}>
+      <Typography
+        sx={{
+          marginLeft: { xs: "0", sm: "1rem" },
+          color: "black",
+          textAlign: { xs: "center", sm: "left" },
+        }}
+      >
         Activez-le pour sécuriser la récupération des cadeaux par vos clients.
       </Typography>
     </Alert>
